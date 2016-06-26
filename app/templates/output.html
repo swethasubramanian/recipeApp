@@ -23,6 +23,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+   
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -68,6 +69,9 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
 
+
+
+
   </div> <!-- /.container-->
 
     <div class="container">
@@ -76,34 +80,25 @@
       </div>
 
       <table class="table table-hover">
-      <tr><th><h2>{{recipeName[0]}}</h2>
-</th><th><h2>{{recipeName[1]}}</h2>
-</th><th><h2>{{recipeName[2]}}</h2></th></tr>
+<div id="container1" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+      
+       
+           <tr><th><h2>{{recipeNames[0]}}</h2></th><th><h2>{{recipeNames[1]}}</h2></th><th><h2>{{recipeNames[2]}}</h2></th></tr>
+      
 
-<tr><th>
-<a href={{recipeURLS[0]}}> <img src={{imageURLS[0]}} alt="yuck" style="width:304px;height:228px;"></a></th><th>
-<a href={{recipeURLS[1]}}> <img src={{imageURLS[1]}} alt="yuck" style="width:304px;height:228px;"></a></th><th>
-<a href={{recipeURLS[2]}}> <img src={{imageURLS[2]}} alt="yuck" style="width:304px;height:228px;"></a></th></tr>
+      <tr><th><a href={{recipeId[0]}}> <img src={{recipeImgUrl[0]}} alt="yuck" style="width:300px;height:200px;"></a></th><th><a href={{recipeId[1]}}> <img src={{recipeImgUrl[1]}} alt="yuck" style="width:300px;height:200px;"></a></th><th><a href={{recipeId[2]}}> <img src={{recipeImgUrl[2]}} alt="yuck" style="width:300px;height:200px;"></a></th></tr>
 
-      <tr><th><h2>{{recipeName[3]}}</h2>
-</th><th><h2>{{recipeName[4]}}</h2>
-</th><th><h2>{{recipeName[5]}}</h2></th></tr>
+                 <tr><th><h2>{{recipeNames[3]}}</h2></th><th><h2>{{recipeNames[4]}}</h2></th><th><h2>{{recipeNames[5]}}</h2></th></tr>
+      
 
+      <tr><th><a href={{recipeId[3]}}> <img src={{recipeImgUrl[3]}} alt="yuck" style="width:300px;height:200px;"></a></th>
+        <th><a href={{recipeId[4]}}> <img src={{recipeImgUrl[4]}} alt="yuck" style="width:300px;height:200px;"></a></th><th><a href={{recipeId[5]}}> <img src={{recipeImgUrl[5]}} alt="yuck" style="width:300px;height:200px;"></a></th></tr>
 
-<tr><th>
-<a href={{recipeURLS[3]}}> <img src={{imageURLS[3]}} alt="yuck" style="width:304px;height:228px;"></a></th><th>
-<a href={{recipeURLS[4]}}> <img src={{imageURLS[4]}} alt="yuck" style="width:304px;height:228px;"></a></th><th>
-<a href={{recipeURLS[5]}}> <img src={{imageURLS[5]}} alt="yuck" style="width:304px;height:228px;"></a></th></tr>
+           <tr><th><h2>{{recipeNames[6]}}</h2></th><th><h2>{{recipeNames[7]}}</h2></th><th><h2>{{recipeNames[8]}}</h2></th></tr>
+      
 
-      <tr><th><h2>{{recipeName[6]}}</h2>
-</th><th><h2>{{recipeName[7]}}</h2>
-</th><th><h2>{{recipeName[8]}}</h2></th></tr>
+      <tr><th><a href={{recipeId[6]}}> <img src={{recipeImgUrl[6]}} alt="yuck" style="width:300px;height:200px;"></a></th><th><a href={{recipeId[7]}}> <img src={{recipeImgUrl[7]}} alt="yuck" style="width:300px;height:200px;"></a></th><th><a href={{recipeId[8]}}> <img src={{recipeImgUrl[8]}} alt="yuck" style="width:300px;height:200px;"></a></th></tr>
 
-
-<tr><th>
-<a href={{recipeURLS[6]}}> <img src={{imageURLS[6]}} alt="yuck" style="width:304px;height:228px;"></a></th><th>
-<a href={{recipeURLS[7]}}> <img src={{imageURLS[7]}} alt="yuck" style="width:304px;height:228px;"></a></th><th>
-<a href={{recipeURLS[8]}}> <img src={{imageURLS[8]}} alt="yuck" style="width:304px;height:228px;"></a></th></tr>
 
       </table>
 
@@ -115,11 +110,53 @@
       <div class="starter-template">
 
       </div>
+          <script>
+$(function () {
+    var veggies = {{veggiesList|safe}}
+    var quantity = {{veggiesQuantity|safe}}
+    var rQuantity2 = $('#my-data').data();
+    var rQuantity = {{recipeQuantity|safe}}
+    $('#container1').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Stacked bar chart'
+        },
+        xAxis: {
+            categories: veggies
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Quantity of veggies a recipe will use up'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Recipe',
+            data: [0,1.0,0,0,0]
+        },{
+            name: 'Inventory',
+            data: quantity
+        }]
+    });
+});
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/highcharts.js"></script>
+    <script src="static/js/modules/exporting.js"></script>
+  
   </body>
 </html>

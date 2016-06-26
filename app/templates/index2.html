@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">RecipeSomething</a>
+          <a class="navbar-brand" href="#">Boo!</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -55,49 +55,30 @@
     </nav>
 <br><br>
     
+
 <div class="container">
 
     <div class="starter-template">
         <h2>Let me suggest some recipes!</h2>
-        <h3>Enter your produce and specify quantity</h3>
+        <p>Enter your produce and specify quantity</p>
     </div>
 
     <div class = "container">
 
-      <form  action="/output" method="GET">
+      <form  action="" method="POST" name ="index2">
+        {{ form.hidden_tag() }}
+
 
         <div class="form-group">
           <table class="table table-hover"> 
 <tr><th>Vegetable</th>    <th>Quantity</th></tr> 
-<tr><td><input type="text" id="veggie1" name='veggie1' placeholder="fennel"></td><td><input type="number" id="quantity1" name='quantity1' placeholder="1"></td><td></tr> 
-<tr><td><input type="text" id="veggie2" name='veggie2' placeholder="beet"></td><td><input type="number" id="quantity2" name='quantity2' placeholder="5"></td><td></tr> 
-<tr><td><input type="text" id="veggie3" name='veggie3' placeholder="carrot"></td><td><input type="number" id="quantity3" name='quantity3' placeholder="5"></td><td></tr> 
-<tr><td><input type="text" id="veggie4" name='veggie4' placeholder="tomato"></td><td><input type="number" id="quantity4" name='quantity4' placeholder="5"></td><td></tr> 
-<tr><td><input type="text" id="veggie5" name='veggie5' placeholder="broccoli"></td><td><input type="number" id="quantity5" name='quantity5' placeholder="1"></td><td></tr> 
-</table>
+{%for inventoryForm in form.inventories%}
+<tr><td>{{inventoryForm.veggie}}</td><td>{{inventoryForm.quantity}}</td><td></tr> 
+{% endfor %}
+<p><input type="submit" value="add"></p>
+</table> 
 
 
- <h3>Meal preferences?</h3>   
-    <div class="form-group">
-  <label>Number Of Servings:</label>
-  <input type="number" id="numServings" name='numServings' placeholder="1">
-  <label>Describe your meal ('fall soup', 'stir-fry' etc):</label>
-  <input type="text" id="mealdescription" name='mealdescription' placeholder="stir fry">
-</div>
-
-</div>
-
-  
-  <h3>Any dietary restrictions?</h3>      
-
-<div class="checkbox">
-<label>
-    <input type="checkbox" name="vegetarian" value="vegetarian"> Vegetarian
-</label>
-<label>
-    <input type="checkbox" name="vegan" value="vegan"> Vegan
-</label>
-</div>
 
 
         </div>
@@ -108,6 +89,10 @@
 
       </form>
     </div>
+
+
+
+
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
