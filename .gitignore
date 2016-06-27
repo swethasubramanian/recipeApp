@@ -1,5 +1,4 @@
-notebooks/recipesDb1 notebooks/recipesDb2 notebooks/recipesDb3 notebooks/recipesDb4 notebooks/recipesDb5 notebooks/recipesDb6 notebooks/recipesDb7 notebooks/recipesDb8
-notebooks/recipeList notebooks/recipeList2 notebooks/recipeList3 notebooks/recipeList4 notebooks/recipeList5 notebooks/recipeList6
-notebooks/adjective.txt notebooks/foodspoils.txt notebooks/ingredients.txt notebooks/measurements.txt notebooks/veggies.txt
+test/
 Insight2016B.pem
-test
+notebooks/*.txt
+notebooks/recipeList*
