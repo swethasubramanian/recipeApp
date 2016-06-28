@@ -9,7 +9,7 @@ import numpy as np
 from nltk.stem.wordnet import WordNetLemmatizer
 
 from sqlCalls import *
-from processText import *
+#from processText import *
 
 from forms import inventory, inventoryAll
 from collections import defaultdict
