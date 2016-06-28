@@ -11,7 +11,7 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from sqlCalls import *
 #from processText import *
 
-from forms import inventory, inventoryAll
+#from forms import inventory, inventoryAll
 from collections import defaultdict
 
 import pandas_highcharts
