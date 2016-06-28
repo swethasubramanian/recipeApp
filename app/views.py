@@ -14,7 +14,7 @@ from sqlCalls import *
 #from forms import inventory, inventoryAll
 from collections import defaultdict
 
-import pandas_highcharts
+#import pandas_highcharts
 
 
 @app.route('/')
