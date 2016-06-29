@@ -57,6 +57,15 @@ input[type=text] {
 input[type=number] {
     color: black;
 }
+.dropdown-menu a{
+    color: #FFFFFF !important;
+}
+
+select {
+    color:black;
+}
+
+
 </style>
   </head>
 
@@ -92,11 +101,31 @@ input[type=number] {
         <div class="form-group">
           <table class="table table-hover"> 
 <tr><th>Vegetable</th>    <th>Quantity</th></tr> 
-<tr><td><input type="text" id="veggie1" name='veggie1' placeholder="fennel"></td><td><input type="number" id="quantity1" name='quantity1' placeholder="1"></td><td></tr> 
-<tr><td><input type="text" id="veggie2" name='veggie2' placeholder="beet"></td><td><input type="number" id="quantity2" name='quantity2' placeholder="5"></td><td></tr> 
-<tr><td><input type="text" id="veggie3" name='veggie3' placeholder="carrot"></td><td><input type="number" id="quantity3" name='quantity3' placeholder="5"></td><td></tr> 
-<tr><td><input type="text" id="veggie4" name='veggie4' placeholder="tomato"></td><td><input type="number" id="quantity4" name='quantity4' placeholder="5"></td><td></tr> 
-<tr><td><input type="text" id="veggie5" name='veggie5' placeholder="broccoli"></td><td><input type="number" id="quantity5" name='quantity5' placeholder="1"></td><td></tr> 
+<tr><td><select name="veggie1" width="400px">
+  {% for veggie in veggiesall %}
+      <option value="{{ veggie }}" SELECTED>{{ veggie }}</option>
+  {% endfor %}
+</select></td><td><input type="number" id="quantity1" name='quantity1' placeholder="1"></td><td></tr> 
+<tr><td><select name="veggie2" width="400px">
+  {% for veggie in veggiesall %}
+      <option value="{{ veggie }}" SELECTED>{{ veggie }}</option>
+  {% endfor %}
+</select></td><td><input type="number" id="quantity2" name='quantity2' placeholder="5"></td><td></tr> 
+<tr><td><select name="veggie3" width="400px">
+  {% for veggie in veggiesall %}
+      <option value="{{ veggie }}" SELECTED>{{ veggie }}</option>
+  {% endfor %}
+</select></td><td><input type="number" id="quantity3" name='quantity3' placeholder="5"></td><td></tr> 
+<tr><td><select name="veggie4" width="400px">
+  {% for veggie in veggiesall %}
+      <option value="{{ veggie }}" SELECTED>{{ veggie }}</option>
+  {% endfor %}
+</select></td><td><input type="number" id="quantity4" name='quantity4' placeholder="5"></td><td></tr> 
+<tr><td><select name="veggie5" width="400px">
+  {% for veggie in veggiesall %}
+      <option value="{{ veggie }}" SELECTED>{{ veggie }}</option>
+  {% endfor %}
+</select></td><td><input type="number" id="quantity5" name='quantity5' placeholder="1"></td><td></tr> 
 </table>
 
 

@@ -1,0 +1,136 @@
+(lp0
+S'bell pepper'
+p1
+aS'kale'
+p2
+aS'fennel'
+p3
+aS'artichoke'
+p4
+aS'cilantro'
+p5
+aS'salad turnip'
+p6
+aS'avocado'
+p7
+aS'celery'
+p8
+aS'pumpkin'
+p9
+aS'acorn squash'
+p10
+aS'endive'
+p11
+aS'romanesco'
+p12
+aS'coriander'
+p13
+aS'onion'
+p14
+aS'thyme'
+p15
+aS'asparagus'
+p16
+aS'escarole'
+p17
+aS'okra'
+p18
+aS'summer squash'
+p19
+aS'plantain'
+p20
+aS'cauliflower'
+p21
+aS'corn'
+p22
+aS'bok'
+p23
+aS'tomatillo'
+p24
+aS'eggplant'
+p25
+aS'cucumber'
+p26
+aS'radish'
+p27
+aS'arugula'
+p28
+aS'lettuce'
+p29
+aS'celeriac'
+p30
+aS'brussels sprout'
+p31
+aS'broccoli rabe'
+p32
+aS'lime'
+p33
+aS'rutabaga'
+p34
+aS'spinach'
+p35
+aS'parsnip'
+p36
+aS'chard'
+p37
+aS'winter squash'
+p38
+aS'beet'
+p39
+aS'basil'
+p40
+aS'butternut squash'
+p41
+aS'mushroom'
+p42
+aS'shallot'
+p43
+aS'mustard green'
+p44
+aS'green bean'
+p45
+aS'yellow squash'
+p46
+aS'jalepeno'
+p47
+aS'turnip'
+p48
+aS'sweet potato'
+p49
+aS'dill'
+p50
+aS'carrot'
+p51
+aS'butter lettuce'
+p52
+aS'collard green'
+p53
+aS'lemon'
+p54
+aS'leek'
+p55
+aS'zucchini'
+p56
+aS'bok choy'
+p57
+aS'kohlrabi'
+p58
+aS'garlic'
+p59
+aS'cabbage'
+p60
+aS'watercress'
+p61
+aS'broccoli'
+p62
+aS'tomato'
+p63
+aS'spaghetti squash'
+p64
+aS'potato'
+p65
+aS'radicchio'
+p66
+aS'green onion'
+p67
+a.

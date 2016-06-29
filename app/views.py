@@ -6,6 +6,8 @@ import pandas as pd
 import psycopg2
 import numpy as np
 
+import pickle
+
 from nltk.stem.wordnet import WordNetLemmatizer
 
 from sqlCalls import *
@@ -15,12 +17,16 @@ from sqlCalls import *
 from collections import defaultdict
 
 #import pandas_highcharts
-
+import os
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))   # refers to application_top
+APP_STATIC = os.path.join(APP_ROOT, 'static')
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html")
+    with open(os.path.join(APP_STATIC, 'veggieslist.txt'), "rb") as fo:
+      veggiesAll = pickle.load(fo) 
+    return render_template("index.html", veggiesall = veggiesAll)
 
 
 def indexFake():
@@ -60,11 +66,11 @@ def getScore(selDf, veggiesQuantity, vDf, numServings):
 
 @app.route('/output')
 def display_output():
-    veggieQuantity = {lemmatizePhrase(request.args.get('veggie1')): int(request.args.get('quantity1')),\
-                lemmatizePhrase(request.args.get('veggie2')): int(request.args.get('quantity2')),\
-                lemmatizePhrase(request.args.get('veggie3')): int(request.args.get('quantity3')),\
-                lemmatizePhrase(request.args.get('veggie4')): int(request.args.get('quantity4')),\
-                lemmatizePhrase(request.args.get('veggie5')): int(request.args.get('quantity5'))}
+    veggieQuantity = {lemmatizePhrase(str(request.args.get('veggie1')).replace(" ", "_")): int(request.args.get('quantity1')),\
+                lemmatizePhrase(str(request.args.get('veggie2')).replace(" ", "_")): int(request.args.get('quantity2')),\
+                lemmatizePhrase(str(request.args.get('veggie3')).replace(" ", "_")): int(request.args.get('quantity3')),\
+                lemmatizePhrase(str(request.args.get('veggie4')).replace(" ", "_")): int(request.args.get('quantity4')),\
+                lemmatizePhrase(str(request.args.get('veggie5')).replace(" ", "_")): int(request.args.get('quantity5'))}
     numServings = int(request.args.get('numServings'))*1.0
     keywords = request.args.get('mealdescription')
 
