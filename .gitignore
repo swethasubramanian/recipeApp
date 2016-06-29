@@ -1,5 +1,11 @@
-test/
-Insight2016B.pem
-notebooks/*.txt
-notebooks/recipeList*
+*_db_file
+*_db_file
 notebooks/recipesDb*
+notebooks/recipeLis*
+notebooks/adjective.txt
+notebooks/foodspoils.txt
+notebooks/ingredients.txt
+notebooks/measurements.txt
+notebooks/veggies.txt
+tags_recipe_ids_file
+test/
