@@ -24,7 +24,7 @@ APP_STATIC = os.path.join(APP_ROOT, 'static')
 @app.route('/')
 @app.route('/index')
 def index():
-    with open(os.path.join(APP_STATIC, 'veggieslist.txt'), "rb") as fo:
+    with open(os.path.join(APP_STATIC, 'veggieslist2.txt'), "rb") as fo:
       veggiesAll = pickle.load(fo) 
     return render_template("index.html", veggiesall = veggiesAll)
 
