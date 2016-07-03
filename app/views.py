@@ -26,6 +26,7 @@ APP_STATIC = os.path.join(APP_ROOT, 'static')
 def index():
     with open(os.path.join(APP_STATIC, 'veggieslist2.txt'), "rb") as fo:
       veggiesAll = pickle.load(fo) 
+    veggiesAll.append('none')
     return render_template("index.html", veggiesall = veggiesAll)
 
 
@@ -76,7 +77,10 @@ def display_output():
 
     #tags = ['vegetarian', 'vegan']
     ##    veggiesQuantity = {'fennel':1, 'beet':5, 'shallot':1, 'carrot':5, 'tomato':5, 'broccoli':1}
-    veggies = veggieQuantity.keys()
+    veggies1 = veggieQuantity.keys()
+    veggies = list(set(veggies1))
+    if 'none' in veggies:
+      veggies.remove('none')
     vDf = getRecipesForVeggies(veggies)
     recipesListFromVeggies = list(set(sum([recipe_id for recipe_id in vDf.recipes.str.split(',')], [])))
     
@@ -96,9 +100,11 @@ def display_output():
 
     selDf = getRecipeIngredientsForVeggies(selectedRecipesList, veggies)
     selDf = selDf.fillna(0)
+    selDf = selDf[selDf['num_servings']!=0].reset_index()
     for veggie in veggies:
-        selDf[veggie] = selDf[veggie].astype(float)
-        selDf[veggie] = (selDf[veggie])/np.max(selDf[veggie])
+        if veggie != 'none':
+          selDf[veggie] = selDf[veggie].astype(float)
+          selDf[veggie] = (selDf[veggie])/np.max(selDf[veggie])
         
     vDf['norm_shelf_life'] = vDf['shelf_life']/np.max(vDf['shelf_life'])
 
@@ -107,7 +113,7 @@ def display_output():
     
     imageDf = getRecipeImageURLs(selDf)
     selDf['id'] = selDf['index']
-    selDf2 = pd.merge(selDf, imageDf, on='id', how='outer').reset_index()
+    selDf2 = pd.merge(selDf, imageDf, on='id', how='outer').reset_index(drop=True)
     #selDf3 = doNLPStuff(selDf2, keywords)
     selDf3 = selDf2.head(10)
     selDf3['id'] = selDf3['id'].apply(lambda x: "http://www.epicurious.com"+str(x))
