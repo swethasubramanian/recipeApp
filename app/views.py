@@ -68,20 +68,26 @@ def getScore(selDf, veggiesQuantity, vDf, numServings):
 
 @app.route('/output')
 def display_output():
-    veggieQuantity = {lemmatizePhrase(str(request.args.get('veggie1')).replace(" ", "_")): int(request.args.get('quantity1')),\
-                lemmatizePhrase(str(request.args.get('veggie2')).replace(" ", "_")): int(request.args.get('quantity2')),\
-                lemmatizePhrase(str(request.args.get('veggie3')).replace(" ", "_")): int(request.args.get('quantity3')),\
-                lemmatizePhrase(str(request.args.get('veggie4')).replace(" ", "_")): int(request.args.get('quantity4')),\
-                lemmatizePhrase(str(request.args.get('veggie5')).replace(" ", "_")): int(request.args.get('quantity5'))}
+    veggieQuantity = {lemmatizePhrase(str(request.args.get('veggie1')).replace(" ", "_")): (request.args.get('quantity1')),\
+                lemmatizePhrase(str(request.args.get('veggie2')).replace(" ", "_")): (request.args.get('quantity2')),\
+                lemmatizePhrase(str(request.args.get('veggie3')).replace(" ", "_")): (request.args.get('quantity3')),\
+                lemmatizePhrase(str(request.args.get('veggie4')).replace(" ", "_")): (request.args.get('quantity4')),\
+                lemmatizePhrase(str(request.args.get('veggie5')).replace(" ", "_")): (request.args.get('quantity5'))}
+    
+
+    if 'none' in veggieQuantity:
+      del veggieQuantity['none']
+
+    for veggie in veggieQuantity.keys():
+      veggieQuantity[veggie] = int(veggieQuantity[veggie])
+
     numServings = int(request.args.get('numServings'))*1.0
     keywords = request.args.get('mealdescription')
 
     #tags = ['vegetarian', 'vegan']
     ##    veggiesQuantity = {'fennel':1, 'beet':5, 'shallot':1, 'carrot':5, 'tomato':5, 'broccoli':1}
-    veggies1 = veggieQuantity.keys()
-    veggies = list(set(veggies1))
-    if 'none' in veggies:
-      veggies.remove('none')
+    veggies = veggieQuantity.keys()
+
     vDf = getRecipesForVeggies(veggies)
     recipesListFromVeggies = list(set(sum([recipe_id for recipe_id in vDf.recipes.str.split(',')], [])))
     
