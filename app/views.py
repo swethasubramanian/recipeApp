@@ -27,6 +27,7 @@ def index():
     with open(os.path.join(APP_STATIC, 'veggieslist2.txt'), "rb") as fo:
       veggiesAll1 = pickle.load(fo) 
     veggiesAll = sorted(veggiesAll1)
+    veggiesAll.remove('romanesco')
     veggiesAll.append('none')
     return render_template("index.html", veggiesall = veggiesAll)
 
